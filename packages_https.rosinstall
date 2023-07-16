@@ -45,7 +45,7 @@
 #EXPLORATION
 - git:
     local-name: src/exploration/gbplanner_ros/
-    uri: https://github.com/ntnu-arl/gbplanner_ros.git
+    uri: https://github.com/lyf23333/gbplanner_ros.git
     version: gbplanner2
 - git:
     local-name: src/exploration/pci_general/
