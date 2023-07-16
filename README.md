@@ -38,7 +38,7 @@ cd gbplanner2_ws/src/exploration
 ```
 Clone the planner
 ```bash
-git clone git@github.com:ntnu-arl/gbplanner_ros.git -b gbplanner2
+git clone git@github.com:lyf23333/gbplanner_ros.git
 ```
 
 Clone and update the required packages:
