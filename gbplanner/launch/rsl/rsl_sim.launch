@@ -46,8 +46,8 @@
   <node name="pose_throttler" type="throttle" pkg="topic_tools" args="messages $(arg robot_name)/ground_truth/pose_with_covariance 10 /msf_core/pose" />
   <!-- Graph based planning -->
   <node pkg="gbplanner" type="gbplanner_node" name="gbplanner_node" output="screen" launch-prefix="$(arg launch_prefix)">
-    <remap from="odometry" to="$(arg odometry_topic)" />
-    <remap from="/pointcloud" to="/input_pointcloud" />
+    <remap from="odometry" to="/icp_localization/range_sensor_odometry" />
+    <remap from="/pointcloud" to="/point_cloud_filter/lidar/point_cloud_filtered" />
     <rosparam command="load" file="$(arg gbplanner_config_file)" />
     <rosparam command="load" file="$(arg map_config_file)" />
   </node>
