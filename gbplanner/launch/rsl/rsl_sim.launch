@@ -61,6 +61,6 @@
     <rosparam command="load" file="$(arg pci_file)" />
   </node>
 
-  <node pkg="rviz" type="rviz" name="gbplanner_ui" output="screen" args="-d $(find gbplanner)/config/rviz/smb.rviz"/>
+  <node pkg="rviz" type="rviz" name="gbplanner_ui" output="screen" args="-d $(find gbplanner)/config/rviz/rsl.rviz"/>
 
 </launch>
