@@ -18,6 +18,7 @@
 
   <!-- Static TF -->
   <node pkg="tf" type="static_transform_publisher" name="tf_53" args="0 0 0 0 0 0 world navigation 100" />
+  <node pkg="tf" type="static_transform_publisher" name="tf_map" args="0 0 0 0 0 0 world map 100" />
 
   <env name="GAZEBO_MODEL_PATH" value="${GAZEBO_MODEL_PATH}:$(find planner_gazebo_sim)/models:$(find subt_cave_sim)/models"/>
   <include file="$(find gazebo_ros)/launch/empty_world.launch">
