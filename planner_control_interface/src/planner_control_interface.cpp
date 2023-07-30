@@ -561,6 +561,7 @@ void PlannerControlInterface::run() {
         pci_manager_->goToWaypoint(current_pose_);
       } else if ((trigger_mode_ == PlannerTriggerModeType::kAuto) ||
                  (run_en_)) {
+        std::cout<<"Triggered"<<std::endl;
         run_en_ = false;
         ROS_INFO_COND(global_verbosity >= Verbosity::INFO,
                       "PlannerControlInterface: Running Planner (%s)",
@@ -658,7 +659,7 @@ void PlannerControlInterface::runPassingGate() {
 }
 
 void PlannerControlInterface::runGlobalPlanner(bool exe_path = false) {
-  ROS_INFO_COND(global_verbosity >= Verbosity::PLANNER_STATUS, "Planning iteration %i",
+  ROS_INFO_COND(global_verbosity >= Verbosity::PLANNER_STATUS, "Global Planning iteration %i",
                 planner_iteration_);
 
   planner_msgs::planner_set_planning_mode planning_mode_srv;
@@ -710,7 +711,7 @@ void PlannerControlInterface::runPlanner(bool exe_path = false) {
     if (stop_planner_request_) return;
 
     bound_mode_ = ind;
-    ROS_INFO_COND(global_verbosity >= Verbosity::PLANNER_STATUS, "Planning iteration %i",
+    ROS_INFO_COND(global_verbosity >= Verbosity::PLANNER_STATUS, "Local Planning iteration %i",
                   planner_iteration_);
     planner_msgs::planner_srv plan_srv;
     plan_srv.request.header.stamp = ros::Time::now();
@@ -743,6 +744,7 @@ void PlannerControlInterface::runPlanner(bool exe_path = false) {
             v_current_ = pci_manager_->getVelocity(path_type);
             // Publish the status
             publishPlannerStatus(plan_srv.response, true);
+            std::cout<<"Execute path"<<std::endl;
             pci_manager_->executePath(plan_srv.response.path, path_to_be_exe,
                                       path_type);
             success = true;
@@ -764,6 +766,7 @@ void PlannerControlInterface::runPlanner(bool exe_path = false) {
       ROS_ERROR_COND(global_verbosity >= Verbosity::ERROR, "Planner service failed");
       ros::Duration(0.5).sleep();
     }
+    std::cout<<"iter"<<std::endl;
   }
 
   // Reset default mode again.

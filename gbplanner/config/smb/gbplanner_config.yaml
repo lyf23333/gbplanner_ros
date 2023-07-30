@@ -1,8 +1,8 @@
 RobotParams:
   type:               kGroundRobot
-  size:               [0.8, 0.8, 0.2] # Actual size of the robot in meters [x, y, z]
+  size:               [0.4, 0.4, 0.4] # Actual size of the robot in meters [x, y, z]
   size_extension_min: [0.0, 0.0, 0.0] # minimum extension outside of robot size allowed to operate
-  size_extension:     [0.2, 0.2, 0.2] # maximum extension outside of the robot size
+  size_extension:     [0., 0., 0.] # maximum extension outside of the robot size
   center_offset:      [0.0, 0.0, 0.0]
   relax_ratio:        0.5 # Used to define an intermediate size between size_extension_min and size_extension for planning
   bound_mode:         kExtendedBound
@@ -108,11 +108,11 @@ RandomSamplerParams:
 # exp_sensor_list: sensors used to compute exploration gain.
 #-------------------------------------------------------------------------------
 PlanningParams:
-  type:             kAdaptiveExploration # Options: kBasicExploration, kAdaptiveExploration
+  type:             kBasicExploration # Options: kBasicExploration, kAdaptiveExploration
   rr_mode:          kGraph
   bound_mode:       kExtremeBound
   exp_sensor_list:  ["VLP16"]
-  no_gain_zones_list: ["g1"]
+  no_gain_zones_list: []
   edge_length_min:  0.1
   edge_length_max:  3.0
   edge_overshoot:   0.0 #m
@@ -161,7 +161,7 @@ PlanningParams:
   global_frame_id: world
   global_path_inclination_check: true
   go_home_if_fully_explored: true
-  geofence_checking_enable: true
+  geofence_checking_enable: false
 
 AdaptiveObbParams:
   type: kPca
